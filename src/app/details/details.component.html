@@ -1,14 +1,20 @@
-<div class="" id="container">
+<div class="" id="container" *ngIf="detailsAll">
   <div class="enteteDesc d-flex">
     <div class="resultMedia" id="picture">
-      <img src="{{ url_img_movie }}{{ detailsPicture }}" />
+      <img [src]="url_img_media + detailsAll.poster_path" />
     </div>
     <div id="description">
-      <p>Titre original : {{ detailsTitle }}</p>
-      <p>Synopsis : {{ detailsOverview }}</p>
-      <p>Date de sortie : {{ detailsDate }}</p>
-      <p>Durée : {{ detailsRuntime }} minutes</p>
-      <p>Note : {{ detailsVote }} <i class="fa-solid fa-star" style="color: #f6e713"></i></p>
+      <p>Titre original : {{ detailsAll.title || detailsAll.name }}</p>
+      <p>Synopsis : {{ detailsAll.overview }}</p>
+      <p>
+        Date de sortie :
+        {{ detailsAll.release_date || detailsAll.first_air_date }}
+      </p>
+      <p>{{ getMediaInfo() }}</p>
+      <p>
+        Note : {{ detailsAll.vote_average }}
+        <i class="fa-solid fa-star" style="color: #f6e713"></i>
+      </p>
     </div>
     <div id="favorisDiv"></div>
   </div>

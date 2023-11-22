@@ -8,38 +8,26 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ApiConfigService {
   API_KEY: string = 'd626a3bd2b510176142a8c48fbc04b97';
-  IMG_URL = 'https://image.tmdb.org/t/p/original';
-  API_URL = 'https://api.themoviedb.org/3/';
-
-  API_POPULAR_MOVIES = `${this.API_URL}movie/popular?api_key=${this.API_KEY}&language=fr-FR&page=1`; // "&language=en-US" et "&page=1" optionnels
-  API_POPULAR_SERIES = `${this.API_URL}tv/popular?api_key=${this.API_KEY}&language=fr-FR&page=1`; // "&language=en-US" et "&page=1" optionnels
-  id: any;
+  IMG_URL: string = 'https://image.tmdb.org/t/p/original';
+  API_URL: string = 'https://api.themoviedb.org/3/';
 
   constructor(private http: HttpClient, public url: ActivatedRoute) {}
 
   getMoviesFromApi(): Observable<any> {
-    return this.http.get<any>(this.API_POPULAR_MOVIES);
+    return this.http.get<any>(
+      `${this.API_URL}movie/popular?api_key=${this.API_KEY}&language=fr-FR&page=1`
+    );
   }
 
-
-  getTest(idClick: any) {
-    idClick = this.id;
-  }
   getSeriesFromApi(): Observable<any> {
-    return this.http.get<any>(this.API_POPULAR_SERIES);
+    return this.http.get<any>(
+      `${this.API_URL}tv/popular?api_key=${this.API_KEY}&language=fr-FR&page=1`
+    );
   }
 
-  getDetailsFromApi(id: any): Observable<any> {
-    return this.http
-      .get<any>(
-        `${this.API_URL}movie/${id}?api_key=${this.API_KEY}&language=fr-FR`
-      )
-      .pipe(
-        tap((response) => console.log(response)),
-        catchError((error) => {
-          console.error(error);
-          return of(null);
-        })
-      );
+  getDetailsFromApi(id: any, typeMedia: string): Observable<any> {
+    return this.http.get<any>(
+      `${this.API_URL}${typeMedia}/${id}?api_key=${this.API_KEY}&language=fr-FR`
+    );
   }
 }

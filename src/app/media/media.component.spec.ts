@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { IndexComponent } from './index.component';
+import { MediaComponent } from './media.component';
 
-describe('IndexComponent', () => {
-  let component: IndexComponent;
-  let fixture: ComponentFixture<IndexComponent>;
+describe('MediaComponent', () => {
+  let component: MediaComponent;
+  let fixture: ComponentFixture<MediaComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [IndexComponent]
+      declarations: [MediaComponent]
     });
-    fixture = TestBed.createComponent(IndexComponent);
+    fixture = TestBed.createComponent(MediaComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
