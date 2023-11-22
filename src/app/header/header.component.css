@@ -20,7 +20,6 @@
   }
   #filmsIndex, #seriesIndex{
       margin-top: 3em;
-      /* display: flex; */
   }
   .details {
     /* overflow-x: scroll;

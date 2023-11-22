@@ -1,0 +1,16 @@
+<div class="" id="container">
+  <div id="filmsIndex">
+    <h2>Films populaires :</h2>
+    <div class="details d-flex" id="scrollMovies">
+      <a routerLink="/details/{{ movie.id }}" *ngFor="let movie of movies">
+        <div class="resultMedia" id="resultMediaIndex">
+          <img src="{{ url_img_movie }}{{ movie.poster_path }}" />
+          <h5>
+            <i class="fa-solid fa-star" style="color: #f6e713"></i>
+            {{ movie.vote_average }}
+          </h5>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>

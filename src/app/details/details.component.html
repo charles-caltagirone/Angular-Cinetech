@@ -1,0 +1,29 @@
+<div class="" id="container">
+  <div class="enteteDesc d-flex">
+    <div class="resultMedia" id="picture">
+      <img src="{{ url_img_movie }}{{ detailsPicture }}" />
+    </div>
+    <div id="description">
+      <p>Titre original : {{ detailsTitle }}</p>
+      <p>Synopsis : {{ detailsOverview }}</p>
+      <p>Date de sortie : {{ detailsDate }}</p>
+      <p>Durée : {{ detailsRuntime }} minutes</p>
+      <p>Note : {{ detailsVote }} <i class="fa-solid fa-star" style="color: #f6e713"></i></p>
+    </div>
+    <div id="favorisDiv"></div>
+  </div>
+  <div class="fullCast">
+    <div class="directorDiv detailsMedia" id="directorDiv">
+      <h3>Réalisateur :</h3>
+      <div class="d-flex" id="director"></div>
+    </div>
+    <div class="castingDIV detailsMedia" id="castingDiv">
+      <h3>Casting :</h3>
+      <div class="d-flex details overflow-auto" id="casting"></div>
+    </div>
+    <div class="similarDIV detailsMedia" id="similarDiv">
+      <h3>Similaires :</h3>
+      <div class="d-flex details overflow-auto" id="similar"></div>
+    </div>
+  </div>
+</div>

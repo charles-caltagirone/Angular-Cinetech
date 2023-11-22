@@ -1,0 +1,18 @@
+<div class="" id="container">
+  <div id="seriesIndex">
+    <h2>Séries populaires :</h2>
+    <div class="details d-flex" id="scrollSeries">
+      <div
+        class="resultMedia"
+        id="resultMediaIndex"
+        *ngFor="let serie of series"
+      >
+        <img src="{{ url_img_serie }}{{ serie.poster_path }}" />
+        <h5>
+          <i class="fa-solid fa-star" style="color: #f6e713"></i>
+          {{ serie.vote_average }}
+        </h5>
+      </div>
+    </div>
+  </div>
+</div>
