@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, catchError, of, tap } from 'rxjs';
+import { Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 
 @Injectable({
@@ -28,6 +28,18 @@ export class ApiConfigService {
   getDetailsFromApi(id: string, typeMedia: string): Observable<any> {
     return this.http.get<any>(
       `${this.API_URL}${typeMedia}/${id}?api_key=${this.API_KEY}&language=fr-FR`
+    );
+  }
+
+  getCastingFromApi(id: string, typeMedia: string) {
+    return this.http.get<any>(
+      `${this.API_URL}${typeMedia}/${id}/credits?api_key=${this.API_KEY}&language=fr-FR`
+    );
+  }
+
+  getSimilarFromApi(id: string, typeMedia: string) {
+    return this.http.get<any>(
+      `${this.API_URL}${typeMedia}/${id}/similar?api_key=${this.API_KEY}&language=fr-FR`
     );
   }
 }

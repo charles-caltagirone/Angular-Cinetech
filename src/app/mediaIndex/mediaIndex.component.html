@@ -2,33 +2,34 @@
   <div id="filmsIndex">
     <h2>Films populaires :</h2>
     <div class="details d-flex" id="scrollMovies">
-      <a
-        routerLink="/details/movie/{{ movie.id }}"
-        *ngFor="let movie of movies"
-      >
-        <div class="resultMedia" id="resultMediaIndex">
-          <img [src]="getUrlImage() + movie.poster_path" />
-          <h5>
-            <i class="fa-solid fa-star" style="color: #f6e713"></i>
-            {{ movie.vote_average }}
-          </h5>
-        </div>
-      </a>
+      <div *ngFor="let movie of movies" class="text-center">
+        <a routerLink="/details/movie/{{ movie.id }}">
+          <div class="resultMedia" id="resultMediaIndex">
+            <img [src]="getUrlImage() + movie.poster_path" />
+          </div>
+        </a>
+        <h5>
+          <i class="fa-solid fa-star" style="color: #f6e713"></i>
+          {{ movie.vote_average }}
+        </h5>
+      </div>
     </div>
   </div>
 
   <div id="seriesIndex">
     <h2>Séries populaires :</h2>
     <div class="details d-flex" id="scrollSeries">
-      <a routerLink="/details/tv/{{ serie.id }}" *ngFor="let serie of series">
-        <div class="resultMedia" id="resultMediaIndex">
-          <img [src]="getUrlImage() + serie.poster_path" />
-          <h5>
-            <i class="fa-solid fa-star" style="color: #f6e713"></i>
-            {{ serie.vote_average }}
-          </h5>
-        </div>
-      </a>
+      <div *ngFor="let serie of series" class="text-center">
+        <a routerLink="/details/tv/{{ serie.id }}">
+          <div class="resultMedia" id="resultMediaIndex">
+            <img [src]="getUrlImage() + serie.poster_path" />
+          </div>
+        </a>
+        <h5>
+          <i class="fa-solid fa-star" style="color: #f6e713"></i>
+          {{ serie.vote_average }}
+        </h5>
+      </div>
     </div>
   </div>
 </div>

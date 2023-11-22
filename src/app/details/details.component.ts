@@ -9,6 +9,9 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class DetailsComponent implements OnInit {
   detailsAll: any;
+  similarList: any;
+  castingListCrew: any;
+  castingListCast: any;
 
   constructor(
     private apiConfig: ApiConfigService,
@@ -19,6 +22,8 @@ export class DetailsComponent implements OnInit {
     const id: string = this.route.snapshot.paramMap.get('id');
     const typeMedia: string = this.route.snapshot.paramMap.get('type');
     this.getDetailsAllInfos(id, typeMedia);
+    this.getCasting(id, typeMedia);
+    this.getSimilar(id, typeMedia);
   }
 
   getDetailsAllInfos(id: string, typeMedia: string) {
@@ -36,7 +41,23 @@ export class DetailsComponent implements OnInit {
     }
     return '';
   }
-  
+
+  getCasting(id: string, typeMedia: string) {
+    this.apiConfig.getCastingFromApi(id, typeMedia).subscribe((data) => {
+      this.castingListCast = data.cast;
+      this.castingListCrew = data.crew;
+    });
+    // .subscribe((data) => (this.castingListCast = data.cast));
+    // .subscribe((data) => console.log(data.cast));
+  }
+
+  getSimilar(id: string, typeMedia: string) {
+    this.apiConfig
+      .getSimilarFromApi(id, typeMedia)
+      .subscribe((data) => (this.similarList = data.results));
+    // .subscribe((data) => console.log(data.results));
+  }
+
   getUrlImage(): string {
     return this.apiConfig.IMG_URL;
   }
