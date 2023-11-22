@@ -12,6 +12,7 @@ export class DetailsComponent implements OnInit {
   similarList: any;
   castingListCrew: any;
   castingListCast: any;
+  typeMedia: string;
 
   constructor(
     private apiConfig: ApiConfigService,
@@ -21,6 +22,7 @@ export class DetailsComponent implements OnInit {
   ngOnInit(): void {
     const id: string = this.route.snapshot.paramMap.get('id');
     const typeMedia: string = this.route.snapshot.paramMap.get('type');
+    this.typeMedia = typeMedia;
     this.getDetailsAllInfos(id, typeMedia);
     this.getCasting(id, typeMedia);
     this.getSimilar(id, typeMedia);
@@ -43,11 +45,13 @@ export class DetailsComponent implements OnInit {
   }
 
   getCasting(id: string, typeMedia: string) {
-    this.apiConfig.getCastingFromApi(id, typeMedia).subscribe((data) => {
-      this.castingListCast = data.cast;
-      this.castingListCrew = data.crew;
-    });
-    // .subscribe((data) => (this.castingListCast = data.cast));
+    this.apiConfig
+      .getCastingFromApi(id, typeMedia)
+      .subscribe((data) => {
+        this.castingListCast = data.cast;
+        this.castingListCrew = data.crew;
+      });
+      // .subscribe((data) => console.log(data.cast));
     // .subscribe((data) => console.log(data.cast));
   }
 

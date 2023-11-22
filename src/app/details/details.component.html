@@ -1,4 +1,4 @@
-<div class="" id="container" *ngIf="detailsAll">
+<div class="" id="container" *ngIf="detailsAll && typeMedia !== 'person'">
   <!-- DETAIL DU MEDIA -->
   <div class="enteteDesc d-flex">
     <div class="resultMedia" id="picture">
@@ -26,7 +26,7 @@
       <h3>Réalisateur :</h3>
       <div class="d-flex" id="director">
         <a
-          href=""
+          routerLink="/details/person/{{ crew.id }}"
           *ngFor="let crew of castingListCrew"
           style="text-decoration: none"
         >

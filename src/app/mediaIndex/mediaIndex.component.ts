@@ -30,6 +30,11 @@ export class MediaComponent implements OnInit {
       .subscribe((data) => (this.series = data.results));
     // .subscribe((data) => console.log(data.results));
   }
+
+  getVoteAverageRound(voteAverage: number) {
+    return Math.round(voteAverage * 10) / 10;
+  }
+
   getUrlImage(): string {
     return this.apiConfig.IMG_URL;
   }

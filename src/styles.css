@@ -9,7 +9,32 @@ body {
 /* #container{
       height: 40vh !important;
   } */
-
+  .details {
+    /* overflow-x: scroll;
+        overflow-y: hidden; */
+    overflow: auto !important;
+    /* scrollbar-width: 70%; */
+    margin-top: 1em;
+    /* width: 90% !important; */
+  }
+  .details::-webkit-scrollbar {
+    width: 5px;
+    height: 10px;
+    background-color: #aaa; /* or add it to the track */
+    border-radius: 10px;
+  }
+  .details::-webkit-scrollbar-thumb {
+    background: red;
+    border-radius: 10px;
+  }
+  
+  .fullCast {
+    width: 90%;
+    margin: 0 1em 0 1em;
+  }
+  #similarDiv {
+    margin-top: 1em;
+  }
 #resultMediaIndex {
   display: flex;
   flex-direction: column;
