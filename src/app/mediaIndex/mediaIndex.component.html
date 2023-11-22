@@ -7,7 +7,7 @@
         *ngFor="let movie of movies"
       >
         <div class="resultMedia" id="resultMediaIndex">
-          <img [src]="url_img_media + movie.poster_path" />
+          <img [src]="getUrlImage() + movie.poster_path" />
           <h5>
             <i class="fa-solid fa-star" style="color: #f6e713"></i>
             {{ movie.vote_average }}
@@ -22,7 +22,7 @@
     <div class="details d-flex" id="scrollSeries">
       <a routerLink="/details/tv/{{ serie.id }}" *ngFor="let serie of series">
         <div class="resultMedia" id="resultMediaIndex">
-          <img [src]="url_img_media + serie.poster_path" />
+          <img [src]="getUrlImage() + serie.poster_path" />
           <h5>
             <i class="fa-solid fa-star" style="color: #f6e713"></i>
             {{ serie.vote_average }}

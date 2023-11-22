@@ -25,7 +25,7 @@ export class ApiConfigService {
     );
   }
 
-  getDetailsFromApi(id: any, typeMedia: string): Observable<any> {
+  getDetailsFromApi(id: string, typeMedia: string): Observable<any> {
     return this.http.get<any>(
       `${this.API_URL}${typeMedia}/${id}?api_key=${this.API_KEY}&language=fr-FR`
     );

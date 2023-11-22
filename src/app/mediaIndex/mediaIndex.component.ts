@@ -3,22 +3,21 @@ import { ApiConfigService } from '../api-config.service';
 
 @Component({
   selector: 'app-media',
-  templateUrl: './media.component.html',
-  styleUrls: ['./media.component.css'],
+  templateUrl: './mediaIndex.component.html',
+  styleUrls: ['./mediaIndex.component.css'],
 })
 export class MediaComponent implements OnInit {
   movies: any[] = [];
   series: any[] = [];
-  url_img_media = 'https://image.tmdb.org/t/p/original/';
 
   constructor(private apiConfig: ApiConfigService) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.getMovies();
     this.getSeries();
   }
 
-  getMovies() {
+  getMovies(): void {
     this.apiConfig
       .getMoviesFromApi()
       .subscribe((data) => (this.movies = data.results));
@@ -30,5 +29,8 @@ export class MediaComponent implements OnInit {
       .getSeriesFromApi()
       .subscribe((data) => (this.series = data.results));
     // .subscribe((data) => console.log(data.results));
+  }
+  getUrlImage(): string {
+    return this.apiConfig.IMG_URL;
   }
 }

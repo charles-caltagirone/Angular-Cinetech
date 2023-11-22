@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { MediaComponent } from './media/media.component';
+import { MediaComponent } from './mediaIndex/mediaIndex.component';
 import { DetailsComponent } from './details/details.component';
 
 const routes: Routes = [

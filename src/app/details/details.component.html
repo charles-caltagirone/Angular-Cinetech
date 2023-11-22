@@ -1,7 +1,7 @@
 <div class="" id="container" *ngIf="detailsAll">
   <div class="enteteDesc d-flex">
     <div class="resultMedia" id="picture">
-      <img [src]="url_img_media + detailsAll.poster_path" />
+      <img [src]="getUrlImage() + detailsAll.poster_path" />
     </div>
     <div id="description">
       <p>Titre original : {{ detailsAll.title || detailsAll.name }}</p>

@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 
 import { HeaderComponent } from './header/header.component';
-import { MediaComponent } from './media/media.component';
+import { MediaComponent } from './mediaIndex/mediaIndex.component';
 import { DetailsComponent } from './details/details.component';
 
 @NgModule({

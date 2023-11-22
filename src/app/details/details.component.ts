@@ -8,7 +8,6 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./details.component.css'],
 })
 export class DetailsComponent implements OnInit {
-  url_img_media = 'https://image.tmdb.org/t/p/original';
   detailsAll: any;
 
   constructor(
@@ -17,12 +16,12 @@ export class DetailsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const id: any = this.route.snapshot.paramMap.get('id');
-    const typeMedia: any = this.route.snapshot.paramMap.get('type');
+    const id: string = this.route.snapshot.paramMap.get('id');
+    const typeMedia: string = this.route.snapshot.paramMap.get('type');
     this.getDetailsAllInfos(id, typeMedia);
   }
 
-  getDetailsAllInfos(id: any, typeMedia: any) {
+  getDetailsAllInfos(id: string, typeMedia: string) {
     this.apiConfig
       .getDetailsFromApi(id, typeMedia)
       .subscribe((data) => (this.detailsAll = data));
@@ -36,5 +35,9 @@ export class DetailsComponent implements OnInit {
       return `Nombres Episodes : ${this.detailsAll.number_of_episodes}`;
     }
     return '';
+  }
+  
+  getUrlImage(): string {
+    return this.apiConfig.IMG_URL;
   }
 }

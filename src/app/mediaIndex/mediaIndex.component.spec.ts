@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MediaComponent } from './media.component';
+import { MediaComponent } from './mediaIndex.component';
 
 describe('MediaComponent', () => {
   let component: MediaComponent;
@@ -8,7 +8,7 @@ describe('MediaComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [MediaComponent]
+      declarations: [MediaComponent],
     });
     fixture = TestBed.createComponent(MediaComponent);
     component = fixture.componentInstance;
