@@ -50,7 +50,7 @@
       <h3>Casting :</h3>
       <div class="d-flex details overflow-auto" id="casting">
         <a
-          href=""
+          routerLink="/details/person/{{ cast.id }}"
           *ngFor="let cast of castingListCast"
           style="text-decoration: none"
         >
@@ -70,7 +70,10 @@
     <div class="similarDIV detailsMedia" id="similarDiv">
       <h3>Similaires :</h3>
       <div class="d-flex details overflow-auto" id="similar">
-        <a href="" *ngFor="let similar of similarList">
+        <a
+          routerLink="/details/{{ typeMedia }}/{{ similar.id }}"
+          *ngFor="let similar of similarList"
+        >
           <img
             *ngIf="similar.poster_path"
             [src]="getUrlImage() + similar.poster_path"
@@ -80,5 +83,24 @@
         </a>
       </div>
     </div>
+  </div>
+</div>
+
+<div class="" id="container" *ngIf="detailsAll && typeMedia == 'person'">
+  <!-- DETAIL DU MEDIA -->
+  <div class="enteteDesc d-flex">
+    <div class="resultMedia" id="picture" *ngIf="detailsAll.profile_path">
+      <img [src]="getUrlImage() + detailsAll.profile_path" />
+    </div>
+    <div id="description">
+      <p>Name : {{ detailsAll.name }}</p>
+      <p>biography : {{ detailsAll.biography }}</p>
+      <p>
+        Date d'anniversaire :
+        {{ detailsAll.birthday }}
+      </p>
+      <p>place_of_birth : {{ detailsAll.place_of_birth }}</p>
+    </div>
+    <div id="favorisDiv"></div>
   </div>
 </div>
