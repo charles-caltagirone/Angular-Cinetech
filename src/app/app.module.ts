@@ -7,6 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './header/header.component';
 import { MediaComponent } from './mediaIndex/mediaIndex.component';
 import { DetailsComponent } from './details/details.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { DetailsComponent } from './details/details.component';
     HeaderComponent,
     MediaComponent,
     DetailsComponent,
+    FooterComponent,
   ],
   imports: [BrowserModule, HttpClientModule, AppRoutingModule],
   providers: [],

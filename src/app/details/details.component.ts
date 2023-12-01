@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ApiConfigService } from '../api-config.service';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -8,7 +8,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './details.component.html',
   styleUrls: ['./details.component.css'],
 })
-export class DetailsComponent implements OnInit {
+export class DetailsComponent implements OnInit, OnDestroy {
   detailsAll: any;
   similarList: any;
   castingListCrew: any;
@@ -37,10 +37,6 @@ export class DetailsComponent implements OnInit {
     });
   }
 
-  // ngOnDestroy() {
-  //   this.routeSub.unsubscribe();
-  // }
-
   getDetailsAllInfos(id: string, typeMedia: string) {
     this.apiConfig
       .getDetailsFromApi(id, typeMedia)
@@ -59,25 +55,43 @@ export class DetailsComponent implements OnInit {
 
   getCasting(id: string, typeMedia: string) {
     this.apiConfig.getCastingFromApi(id, typeMedia).subscribe((data) => {
+      let uniqueCrew = new Set();
+      let uniqueCrewList = [];
+
+      data.crew.forEach((crew: any) => {
+        if (
+          crew.job == 'Director' ||
+          crew.job == 'Original Concept' ||
+          crew.job == 'Executive Producer' ||
+          crew.job == 'Producer'
+        ) {
+          if (!uniqueCrew.has(crew.id)) {
+            uniqueCrew.add(crew.id);
+            uniqueCrewList.push(crew);
+          }
+        }
+      });
+
       this.castingListCast = data.cast;
-      this.castingListCrew = data.crew;
+      this.castingListCrew = uniqueCrewList;
     });
-    // .subscribe((data) => console.log(data.cast));
-    // .subscribe((data) => console.log(data.crew));
   }
 
   getSimilar(id: string, typeMedia: string) {
     this.apiConfig
       .getSimilarFromApi(id, typeMedia)
       .subscribe((data) => (this.similarList = data.results));
-    // .subscribe((data) => console.log(data.results));
   }
 
   getUrlImage(): string {
     return this.apiConfig.IMG_URL;
   }
-  
+
   getVoteAverageRound(voteAverage: number) {
     return Math.round(voteAverage * 10) / 10;
+  }
+
+  ngOnDestroy() {
+    this.routeSub.unsubscribe();
   }
 }

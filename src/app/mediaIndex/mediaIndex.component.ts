@@ -1,14 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiConfigService } from '../api-config.service';
 
+interface MediaData {
+  data: any[];
+  loading: boolean;
+}
+
 @Component({
   selector: 'app-media',
   templateUrl: './mediaIndex.component.html',
   styleUrls: ['./mediaIndex.component.css'],
 })
 export class MediaComponent implements OnInit {
-  movies: any[] = [];
-  series: any[] = [];
+  media: { movies: MediaData; series: MediaData } = {
+    movies: { data: [], loading: true },
+    series: { data: [], loading: true },
+  };
 
   constructor(private apiConfig: ApiConfigService) {}
 
@@ -18,15 +25,17 @@ export class MediaComponent implements OnInit {
   }
 
   getMovies(): void {
-    this.apiConfig
-      .getMoviesFromApi()
-      .subscribe((data) => (this.movies = data.results));
+    this.apiConfig.getMoviesFromApi().subscribe((data) => {
+      this.media.movies.data = data.results;
+      this.media.movies.loading = false;
+    });
   }
 
   getSeries(): void {
-    this.apiConfig
-      .getSeriesFromApi()
-      .subscribe((data) => (this.series = data.results));
+    this.apiConfig.getSeriesFromApi().subscribe((data) => {
+      this.media.series.data = data.results;
+      this.media.series.loading = false;
+    });
   }
 
   getVoteAverageRound(voteAverage: number) {

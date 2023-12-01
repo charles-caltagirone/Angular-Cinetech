@@ -2,44 +2,72 @@
   <div id="filmsIndex">
     <h2>Films populaires :</h2>
     <div class="carousel">
-      <button class="carousel__button carousel__button--left" (click)="scrollLeft('scrollMovies')"><i class="fa fa-chevron-left"></i></button>
+      <button class="carousel__button carousel__button--left" (click)="scrollLeft('scrollMovies')"><i
+          class="fa fa-chevron-left"></i></button>
       <div class="details d-flex" id="scrollMovies">
         <!-- Your movie elements here -->
-        <div *ngFor="let movie of movies" class="text-center">
-          <a routerLink="/details/movie/{{ movie.id }}">
-            <div class="resultMedia" id="resultMediaIndex">
-              <img [src]="getUrlImage() + movie.poster_path" />
-            </div>
-          </a>
-          <h5>
-            <i class="fa-solid fa-star" style="color: #f6e713"></i>
-            {{ getVoteAverageRound(movie.vote_average) }}
-          </h5>
+        <div *ngIf="media.movies.loading; else loadedMovies" class="skeleton">
+          <!-- Skeleton Component -->
+          <div class="skeleton_div" *ngFor="let i of [1,2,3,4,5,6,7,8]">
+            <div class="skeleton__image"></div>
+            <div class="skeleton__text"></div>
+          </div>
         </div>
-      </div>
-      <button class="carousel__button carousel__button--right" (click)="scrollRight('scrollMovies')"><i class="fa fa-chevron-right"></i></button>
-    </div>
-  </div>
 
-  <div id="seriesIndex">
-    <h2>Séries populaires :</h2>
-    <div class="carousel">
-      <button class="carousel__button carousel__button--left" (click)="scrollLeft('scrollSeries')"><i class="fa fa-chevron-left"></i></button>
-      <div class="details d-flex" id="scrollSeries">
-        <!-- Your series elements here -->
-        <div *ngFor="let serie of series" class="text-center">
-          <a routerLink="/details/tv/{{ serie.id }}">
-            <div class="resultMedia" id="resultMediaIndex">
-              <img [src]="getUrlImage() + serie.poster_path" />
+        <ng-template #loadedMovies>
+          <!-- Real Component -->
+          <div *ngFor="let movie of media.movies.data" class="text-center">
+            <a routerLink="/details/movie/{{ movie.id }}">
+              <div class="resultMedia" id="resultMediaIndex">
+                <img [src]="getUrlImage() + movie.poster_path" />
+              </div>
+            </a>
+            <h5>
+              <i class="fa-solid fa-star" style="color: #f6e713"></i>
+              {{ getVoteAverageRound(movie.vote_average) }}
+            </h5>
+          </div>
+        </ng-template>
+
+        <button class="carousel__button carousel__button--right" (click)="scrollRight('scrollMovies')"><i
+            class="fa fa-chevron-right"></i></button>
+      </div>
+    </div>
+
+    <div id="seriesIndex">
+      <h2>Séries populaires :</h2>
+      <div class="carousel">
+        <button class="carousel__button carousel__button--left" (click)="scrollLeft('scrollSeries')"><i
+            class="fa fa-chevron-left"></i></button>
+        <div class="details d-flex" id="scrollSeries">
+          <!-- Your series elements here -->
+          <div *ngIf="media.series.loading; else loadedSeries" class="skeleton">
+            <!-- Skeleton Component -->
+            <div class="skeleton_div" *ngFor="let i of [1,2,3,4,5,6,7,8]">
+              <div class="skeleton__image"></div>
+              <div class="skeleton__text"></div>
             </div>
-          </a>
-          <h5>
-            <i class="fa-solid fa-star" style="color: #f6e713"></i>
-            {{ getVoteAverageRound(serie.vote_average) }}
-          </h5>
+          </div>
+
+          <ng-template #loadedSeries>
+            <!-- Real Component -->
+            <div *ngFor="let serie of media.series.data" class="text-center">
+              <a routerLink="/details/tv/{{ serie.id }}">
+                <div class="resultMedia" id="resultMediaIndex">
+                  <img [src]="getUrlImage() + serie.poster_path" />
+                </div>
+              </a>
+              <h5>
+                <i class="fa-solid fa-star" style="color: #f6e713"></i>
+                {{ getVoteAverageRound(serie.vote_average) }}
+              </h5>
+            </div>
+          </ng-template>
+
+          <button class="carousel__button carousel__button--right" (click)="scrollRight('scrollSeries')"><i
+              class="fa fa-chevron-right"></i></button>
         </div>
       </div>
-      <button class="carousel__button carousel__button--right" (click)="scrollRight('scrollSeries')"><i class="fa fa-chevron-right"></i></button>
     </div>
+
   </div>
-</div>

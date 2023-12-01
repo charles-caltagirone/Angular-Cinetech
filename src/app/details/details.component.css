@@ -9,7 +9,7 @@
   flex: 1;
 }
 
-#picture img {
+.mainImage {
   width: 100%;
   border-radius: 5px;
 }
@@ -57,21 +57,21 @@
   margin-right: 10px;
 }
 
-.detailsMedia .d-flex img {
-  width: 100px;
-  border-radius: 5px;
-  margin: 5px; /* added margin to create space between images */
-}
-
-#similar img,
-#casting img,
-#director img {
+.divImage {
   width: 100px; /* adjust as needed */
   height: 150px; /* adjust as needed */
   object-fit: cover; /* this will ensure that images maintain their aspect ratio */
   border-radius: 5px;
   margin: 5px;
 }
+#crew > a > div > p:nth-child(2) {
+  margin: 0;
+  border-bottom: 1px solid black;
+}
+#crew > a > div > p:nth-child(3) {
+  font-style: italic;
+}
+
 /* This applies to all scrollable elements */
 ::-webkit-scrollbar {
   width: 10px;

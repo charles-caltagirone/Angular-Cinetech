@@ -1,8 +1,8 @@
 <div class="" id="container" *ngIf="detailsAll && typeMedia !== 'person'">
   <!-- DETAIL DU MEDIA -->
   <div class="enteteDesc d-flex">
-    <div class="resultMedia" id="picture">
-      <img [src]="getUrlImage() + detailsAll.poster_path" />
+    <div class="resultMedia">
+      <img [src]="getUrlImage() + detailsAll.poster_path" class="mainImage" />
     </div>
     <div id="description">
       <h1>{{ detailsAll.title || detailsAll.name }}</h1>
@@ -20,15 +20,17 @@
     <div id="favorisDiv"></div>
   </div>
 
-  <!-- DIRECTOR DU MEDIA -->
+  <!-- CREW DU MEDIA -->
   <div class="fullCast">
-    <div class="directorDiv detailsMedia" id="directorDiv">
-      <h3>Réalisateur :</h3>
-      <div class="d-flex" id="director">
+    <div class="detailsMedia">
+      <h3>Crew :</h3>
+      <div class="d-flex" id="crew">
         <a routerLink="/details/person/{{ crew.id }}" *ngFor="let crew of castingListCrew">
-          <div *ngIf="crew.profile_path && crew.job == 'Director'" class="text-center">
-            <img [src]="getUrlImage() + crew.profile_path" alt="" />
-            <p>{{ crew.name }}</p>
+          <div class="text-center">
+            <img *ngIf="crew.profile_path; else defaultImage" [src]=" getUrlImage() + crew.profile_path"
+              class="divImage" />
+            <p class=" job">{{ crew.name }}</p>
+            <p>{{ crew.job }}</p>
           </div>
         </a>
       </div>
@@ -39,9 +41,9 @@
       <h3>Casting :</h3>
       <div class="d-flex details overflow-auto" id="casting">
         <a routerLink="/details/person/{{ cast.id }}" *ngFor="let cast of castingListCast">
-          <div *ngIf="cast.profile_path" class="text-center">
-            <img [src]="getUrlImage() + cast.profile_path" alt=""
-              style="width: 100px; border-radius: 5px; margin: 5px" />
+          <div class="text-center">
+            <img *ngIf="cast.profile_path; else defaultImage" [src]="getUrlImage() + cast.profile_path"
+              class="divImage" />
             <p>{{ cast.name }}</p>
           </div>
         </a>
@@ -53,7 +55,7 @@
       <h3>Similaires :</h3>
       <div class="d-flex details overflow-auto" id="similar">
         <a routerLink="/details/{{ typeMedia }}/{{ similar.id }}" *ngFor="let similar of similarList">
-          <img *ngIf="similar.poster_path" [src]="getUrlImage() + similar.poster_path" alt="" />
+          <img *ngIf="similar.poster_path" [src]="getUrlImage() + similar.poster_path" alt="" class="divImage" />
         </a>
       </div>
     </div>
@@ -63,8 +65,9 @@
 <div class="" id="container" *ngIf="detailsAll && typeMedia == 'person'">
   <!-- DETAIL DU MEDIA -->
   <div class="enteteDesc d-flex">
-    <div class="resultMedia" id="picture" *ngIf="detailsAll.profile_path">
-      <img [src]="getUrlImage() + detailsAll.profile_path" />
+    <div class="resultMedia">
+      <img *ngIf="detailsAll.profile_path; else defaultMainImage" [src]="getUrlImage() + detailsAll.profile_path"
+        class="mainImage" />
     </div>
     <div id="description">
       <h1>{{ detailsAll.name }}</h1>
@@ -78,3 +81,11 @@
     <div id="favorisDiv"></div>
   </div>
 </div>
+
+<ng-template #defaultImage>
+  <img src="../../assets/No-Image.webp" alt="" class="divImage" />
+</ng-template>
+
+<ng-template #defaultMainImage>
+  <img src="../../assets/No-Image.webp" alt="" class="mainImage" />
+</ng-template>

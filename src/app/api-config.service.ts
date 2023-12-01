@@ -15,16 +15,14 @@ export class ApiConfigService {
 
   getMoviesFromApi(): Observable<any> {
     return this.http.get<any>(
-      `${this.API_URL}movie/popular?api_key=${this.API_KEY}&language=fr-FR&page=1`
+      `${this.API_URL}movie/top_rated?api_key=${this.API_KEY}&language=fr-FR&page=1`
     );
   }
-
   getSeriesFromApi(): Observable<any> {
     return this.http.get<any>(
-      `${this.API_URL}tv/popular?api_key=${this.API_KEY}&language=fr-FR&page=1`
+      `${this.API_URL}tv/top_rated?api_key=${this.API_KEY}&language=fr-FR&page=1`
     );
   }
-
   getDetailsFromApi(id: string, typeMedia: string): Observable<any> {
     return this.http.get<any>(
       `${this.API_URL}${typeMedia}/${id}?api_key=${this.API_KEY}&language=fr-FR`
