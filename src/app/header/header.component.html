@@ -1,7 +1,9 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-        <a class="navbar-brand" href="./index.php"><img src="./assets/iconeC.png" width="30px" alt="icone cinetech"></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <a class="navbar-brand" href="./index.php"><img src="./assets/iconeC.png" width="30px"
+                alt="icone cinetech" /></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -15,14 +17,25 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" routerLink="">Séries</a>
                 </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" routerLink="">Connexion</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" routerLink="">Inscription</a>
-                    </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" routerLink="">Connexion</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" routerLink="">Inscription</a>
+                </li>
             </ul>
-                <!-- <div class="position-absolute" id="result"></div> -->
+            <form class="d-flex">
+                <input class="form-control me-2" id="searchBar" type="search" placeholder="Search" aria-label="Search"
+                    autocomplete="off" (keyup)="onKeyUp($event)" />
+                <div class="position-absolute" id="result">
+                    <p *ngFor="let query of queryAll">
+                        <a routerLink="/details/{{query.media_type}}/{{ query.id }}">
+                            <span *ngIf="query.media_type == 'tv' || query.media_type == 'person'">{{query.name}}</span>
+                            <span *ngIf="query.media_type == 'movie'">{{query.title}}</span>
+                        </a>
+                    </p>
+                </div>
+            </form>
         </div>
     </div>
 </nav>

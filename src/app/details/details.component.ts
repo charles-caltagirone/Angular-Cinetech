@@ -45,7 +45,7 @@ export class DetailsComponent implements OnInit {
     this.apiConfig
       .getDetailsFromApi(id, typeMedia)
       .subscribe((data) => (this.detailsAll = data));
-      // .subscribe((data) => console.log(data));
+    // .subscribe((data) => console.log(data));
   }
 
   getMediaInfo() {
@@ -63,7 +63,7 @@ export class DetailsComponent implements OnInit {
       this.castingListCrew = data.crew;
     });
     // .subscribe((data) => console.log(data.cast));
-    // .subscribe((data) => console.log(data.cast));
+    // .subscribe((data) => console.log(data.crew));
   }
 
   getSimilar(id: string, typeMedia: string) {

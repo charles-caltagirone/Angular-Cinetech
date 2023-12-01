@@ -42,4 +42,9 @@ export class ApiConfigService {
       `${this.API_URL}${typeMedia}/${id}/similar?api_key=${this.API_KEY}&language=fr-FR`
     );
   }
+  getSearchFromApi(query: string) {
+    return this.http.get<any>(
+      `${this.API_URL}search/multi?api_key=${this.API_KEY}&language=fr-FR&page=1&query=${query}`
+    );
+  }
 }
