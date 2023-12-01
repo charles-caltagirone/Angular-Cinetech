@@ -76,4 +76,8 @@ export class DetailsComponent implements OnInit {
   getUrlImage(): string {
     return this.apiConfig.IMG_URL;
   }
+  
+  getVoteAverageRound(voteAverage: number) {
+    return Math.round(voteAverage * 10) / 10;
+  }
 }
