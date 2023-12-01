@@ -1,0 +1,114 @@
+.enteteDesc {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.resultMedia {
+  flex: 1;
+}
+
+#picture img {
+  width: 100%;
+  border-radius: 5px;
+}
+
+#description {
+  flex: 2;
+  margin-left: 20px;
+}
+
+#description p {
+  margin-bottom: 10px;
+  color: #333; /* changed text color to dark grey */
+}
+
+.fullCast {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.detailsMedia {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.detailsMedia h3 {
+  margin-bottom: 10px;
+  color: #333; /* changed text color to dark grey */
+}
+
+.detailsMedia .d-flex {
+  overflow-x: auto;
+}
+
+.detailsMedia .d-flex a {
+  text-decoration: none;
+  color: #000; /* changed text color to black */
+}
+
+.detailsMedia .d-flex div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.detailsMedia .d-flex img {
+  width: 100px;
+  border-radius: 5px;
+  margin: 5px; /* added margin to create space between images */
+}
+
+#similar img,
+#casting img,
+#director img {
+  width: 100px; /* adjust as needed */
+  height: 150px; /* adjust as needed */
+  object-fit: cover; /* this will ensure that images maintain their aspect ratio */
+  border-radius: 5px;
+  margin: 5px;
+}
+/* This applies to all scrollable elements */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Apply the scrollbar styles specifically for casting and similar sections */
+#casting::-webkit-scrollbar,
+#similar::-webkit-scrollbar {
+  width: 10px;
+}
+
+#casting::-webkit-scrollbar-track,
+#similar::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+#casting::-webkit-scrollbar-thumb,
+#similar::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+#casting::-webkit-scrollbar-thumb:hover,
+#similar::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}

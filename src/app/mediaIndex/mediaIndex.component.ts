@@ -21,14 +21,12 @@ export class MediaComponent implements OnInit {
     this.apiConfig
       .getMoviesFromApi()
       .subscribe((data) => (this.movies = data.results));
-    // .subscribe((data) => console.log(data.results));
   }
 
   getSeries(): void {
     this.apiConfig
       .getSeriesFromApi()
       .subscribe((data) => (this.series = data.results));
-    // .subscribe((data) => console.log(data.results));
   }
 
   getVoteAverageRound(voteAverage: number) {
@@ -37,5 +35,21 @@ export class MediaComponent implements OnInit {
 
   getUrlImage(): string {
     return this.apiConfig.IMG_URL;
+  }
+
+  scrollRight(id: string) {
+    const container = document.getElementById(id);
+    container.scrollTo({
+      left: container.scrollLeft + 500,
+      behavior: 'smooth',
+    });
+  }
+
+  scrollLeft(id: string) {
+    const container = document.getElementById(id);
+    container.scrollTo({
+      left: container.scrollLeft - 500,
+      behavior: 'smooth',
+    });
   }
 }

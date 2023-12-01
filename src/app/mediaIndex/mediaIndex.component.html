@@ -1,35 +1,45 @@
-<div class="" id="container">
+<div id="container">
   <div id="filmsIndex">
     <h2>Films populaires :</h2>
-    <div class="details d-flex" id="scrollMovies">
-      <div *ngFor="let movie of movies" class="text-center">
-        <a routerLink="/details/movie/{{ movie.id }}">
-          <div class="resultMedia" id="resultMediaIndex">
-            <img [src]="getUrlImage() + movie.poster_path" />
-          </div>
-        </a>
-        <h5>
-          <i class="fa-solid fa-star" style="color: #f6e713"></i>
-          {{ getVoteAverageRound(movie.vote_average) }}
-        </h5>
+    <div class="carousel">
+      <button class="carousel__button carousel__button--left" (click)="scrollLeft('scrollMovies')"><i class="fa fa-chevron-left"></i></button>
+      <div class="details d-flex" id="scrollMovies">
+        <!-- Your movie elements here -->
+        <div *ngFor="let movie of movies" class="text-center">
+          <a routerLink="/details/movie/{{ movie.id }}">
+            <div class="resultMedia" id="resultMediaIndex">
+              <img [src]="getUrlImage() + movie.poster_path" />
+            </div>
+          </a>
+          <h5>
+            <i class="fa-solid fa-star" style="color: #f6e713"></i>
+            {{ getVoteAverageRound(movie.vote_average) }}
+          </h5>
+        </div>
       </div>
+      <button class="carousel__button carousel__button--right" (click)="scrollRight('scrollMovies')"><i class="fa fa-chevron-right"></i></button>
     </div>
   </div>
 
   <div id="seriesIndex">
     <h2>Séries populaires :</h2>
-    <div class="details d-flex" id="scrollSeries">
-      <div *ngFor="let serie of series" class="text-center">
-        <a routerLink="/details/tv/{{ serie.id }}">
-          <div class="resultMedia" id="resultMediaIndex">
-            <img [src]="getUrlImage() + serie.poster_path" />
-          </div>
-        </a>
-        <h5>
-          <i class="fa-solid fa-star" style="color: #f6e713"></i>
-          {{ getVoteAverageRound(serie.vote_average) }}
-        </h5>
+    <div class="carousel">
+      <button class="carousel__button carousel__button--left" (click)="scrollLeft('scrollSeries')"><i class="fa fa-chevron-left"></i></button>
+      <div class="details d-flex" id="scrollSeries">
+        <!-- Your series elements here -->
+        <div *ngFor="let serie of series" class="text-center">
+          <a routerLink="/details/tv/{{ serie.id }}">
+            <div class="resultMedia" id="resultMediaIndex">
+              <img [src]="getUrlImage() + serie.poster_path" />
+            </div>
+          </a>
+          <h5>
+            <i class="fa-solid fa-star" style="color: #f6e713"></i>
+            {{ getVoteAverageRound(serie.vote_average) }}
+          </h5>
+        </div>
       </div>
+      <button class="carousel__button carousel__button--right" (click)="scrollRight('scrollSeries')"><i class="fa fa-chevron-right"></i></button>
     </div>
   </div>
 </div>

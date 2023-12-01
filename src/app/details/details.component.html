@@ -25,21 +25,10 @@
     <div class="directorDiv detailsMedia" id="directorDiv">
       <h3>Réalisateur :</h3>
       <div class="d-flex" id="director">
-        <a
-          routerLink="/details/person/{{ crew.id }}"
-          *ngFor="let crew of castingListCrew"
-          style="text-decoration: none"
-        >
-          <div
-            *ngIf="crew.profile_path && crew.job == 'Director'"
-            class="text-center"
-          >
-            <img
-              [src]="getUrlImage() + crew.profile_path"
-              alt=""
-              style="width: 100px; border-radius: 5px; margin: 5px"
-            />
-            <p style="color: #fff">{{ crew.name }}</p>
+        <a routerLink="/details/person/{{ crew.id }}" *ngFor="let crew of castingListCrew">
+          <div *ngIf="crew.profile_path && crew.job == 'Director'" class="text-center">
+            <img [src]="getUrlImage() + crew.profile_path" alt="" />
+            <p>{{ crew.name }}</p>
           </div>
         </a>
       </div>
@@ -49,18 +38,11 @@
     <div class="castingDIV detailsMedia" id="castingDiv">
       <h3>Casting :</h3>
       <div class="d-flex details overflow-auto" id="casting">
-        <a
-          routerLink="/details/person/{{ cast.id }}"
-          *ngFor="let cast of castingListCast"
-          style="text-decoration: none"
-        >
+        <a routerLink="/details/person/{{ cast.id }}" *ngFor="let cast of castingListCast">
           <div *ngIf="cast.profile_path" class="text-center">
-            <img
-              [src]="getUrlImage() + cast.profile_path"
-              alt=""
-              style="width: 100px; border-radius: 5px; margin: 5px"
-            />
-            <p style="color: #fff">{{ cast.name }}</p>
+            <img [src]="getUrlImage() + cast.profile_path" alt=""
+              style="width: 100px; border-radius: 5px; margin: 5px" />
+            <p>{{ cast.name }}</p>
           </div>
         </a>
       </div>
@@ -70,16 +52,8 @@
     <div class="similarDIV detailsMedia" id="similarDiv">
       <h3>Similaires :</h3>
       <div class="d-flex details overflow-auto" id="similar">
-        <a
-          routerLink="/details/{{ typeMedia }}/{{ similar.id }}"
-          *ngFor="let similar of similarList"
-        >
-          <img
-            *ngIf="similar.poster_path"
-            [src]="getUrlImage() + similar.poster_path"
-            alt=""
-            style="width: 100px; border-radius: 5px; margin: 5px"
-          />
+        <a routerLink="/details/{{ typeMedia }}/{{ similar.id }}" *ngFor="let similar of similarList">
+          <img *ngIf="similar.poster_path" [src]="getUrlImage() + similar.poster_path" alt="" />
         </a>
       </div>
     </div>
